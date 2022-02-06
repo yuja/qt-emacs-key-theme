@@ -34,6 +34,8 @@ QList<QKeySequence> EmacsKeyTheme::keyBindings(QKeySequence::StandardKey key) co
         return { CTRL | Qt::Key_Slash }; // TODO: more undo keys
     case QKeySequence::Redo:
         return {}; // TODO
+    case QKeySequence::Print:
+        return {}; // drop C-p
     case QKeySequence::Find:
         return {}; // TODO
     case QKeySequence::FindNext:
