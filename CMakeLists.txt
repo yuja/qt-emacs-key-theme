@@ -13,6 +13,8 @@ find_package(QT NAMES Qt6 Qt5 COMPONENTS Gui REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Gui REQUIRED)
 
 add_library(QtEmacsKeyThemePlugin SHARED
+  emacskeytheme.cpp
+  emacskeytheme.h
   emacskeytheme.json
   emacskeythemeplugin.cpp
   emacskeythemeplugin.h
