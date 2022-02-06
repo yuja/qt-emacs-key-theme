@@ -18,6 +18,8 @@ add_library(QtEmacsKeyThemePlugin SHARED
   emacskeytheme.json
   emacskeythemeplugin.cpp
   emacskeythemeplugin.h
+  proxytheme.cpp
+  proxytheme.h
 )
 
 target_link_libraries(QtEmacsKeyThemePlugin
