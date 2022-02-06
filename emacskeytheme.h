@@ -1,12 +1,12 @@
 #ifndef EMACSKEYTHEME_H
 #define EMACSKEYTHEME_H
 
-#include <qpa/qplatformtheme.h>
+#include "proxytheme.h"
 
-class EmacsKeyTheme : public QPlatformTheme
+class EmacsKeyTheme : public ProxyTheme
 {
 public:
-    EmacsKeyTheme();
+    explicit EmacsKeyTheme(std::unique_ptr<QPlatformTheme> baseTheme);
     EmacsKeyTheme(const EmacsKeyTheme &) = delete;
     EmacsKeyTheme &operator=(const EmacsKeyTheme &) = delete;
 

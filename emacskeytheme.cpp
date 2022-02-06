@@ -2,7 +2,10 @@
 #include <QList>
 #include "emacskeytheme.h"
 
-EmacsKeyTheme::EmacsKeyTheme() { }
+EmacsKeyTheme::EmacsKeyTheme(std::unique_ptr<QPlatformTheme> baseTheme)
+    : ProxyTheme(std::move(baseTheme))
+{
+}
 
 QList<QKeySequence> EmacsKeyTheme::keyBindings(QKeySequence::StandardKey key) const
 {
@@ -78,5 +81,5 @@ QList<QKeySequence> EmacsKeyTheme::keyBindings(QKeySequence::StandardKey key) co
     default:
         break;
     }
-    return QPlatformTheme::keyBindings(key);
+    return ProxyTheme::keyBindings(key);
 }
