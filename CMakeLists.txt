@@ -18,6 +18,10 @@ add_library(QtEmacsKeyThemePlugin SHARED
   emacskeythemeplugin.h
 )
 
-target_link_libraries(QtEmacsKeyThemePlugin PRIVATE Qt${QT_VERSION_MAJOR}::Gui)
+target_link_libraries(QtEmacsKeyThemePlugin
+  PRIVATE
+    Qt${QT_VERSION_MAJOR}::Gui
+    Qt${QT_VERSION_MAJOR}::GuiPrivate
+)
 
 target_compile_definitions(QtEmacsKeyThemePlugin PRIVATE QTEMACSKEYTHEME_LIBRARY)

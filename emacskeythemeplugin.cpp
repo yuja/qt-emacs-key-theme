@@ -1,11 +1,8 @@
 #include "emacskeythemeplugin.h"
 
-EmacsKeyThemePlugin::EmacsKeyThemePlugin(QObject *parent)
-    : QGenericPlugin(parent)
-{
-}
+EmacsKeyThemePlugin::EmacsKeyThemePlugin(QObject *parent) : QPlatformThemePlugin(parent) { }
 
-QObject *EmacsKeyThemePlugin::create(const QString &name, const QString &spec)
+QPlatformTheme *EmacsKeyThemePlugin::create(const QString &key, const QStringList &paramList)
 {
     static_assert(false, "You need to implement this function");
 }

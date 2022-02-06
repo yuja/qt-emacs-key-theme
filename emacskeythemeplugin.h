@@ -1,18 +1,18 @@
 #ifndef EMACSKEYTHEMEPLUGIN_H
 #define EMACSKEYTHEMEPLUGIN_H
 
-#include <QGenericPlugin>
+#include <qpa/qplatformthemeplugin.h>
 
-class EmacsKeyThemePlugin : public QGenericPlugin
+class EmacsKeyThemePlugin : public QPlatformThemePlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID QGenericPluginFactoryInterface_iid FILE "emacskeytheme.json")
+    Q_PLUGIN_METADATA(IID QPlatformThemeFactoryInterface_iid FILE "emacskeytheme.json")
 
 public:
     explicit EmacsKeyThemePlugin(QObject *parent = nullptr);
 
 private:
-    QObject *create(const QString &name, const QString &spec) override;
+    QPlatformTheme *create(const QString &key, const QStringList &paramList) override;
 };
 
 #endif // EMACSKEYTHEMEPLUGIN_H
