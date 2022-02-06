@@ -9,6 +9,8 @@ public:
     EmacsKeyTheme();
     EmacsKeyTheme(const EmacsKeyTheme &) = delete;
     EmacsKeyTheme &operator=(const EmacsKeyTheme &) = delete;
+
+    QList<QKeySequence> keyBindings(QKeySequence::StandardKey key) const override;
 };
 
 #endif // EMACSKEYTHEME_H
