@@ -1,0 +1,6 @@
+*.autosave
+*.orig
+*.rej
+*~
+CMakeLists.txt.user
+CMakeLists.txt.user.*
