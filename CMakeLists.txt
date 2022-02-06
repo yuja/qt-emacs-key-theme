@@ -29,3 +29,19 @@ target_link_libraries(QtEmacsKeyThemePlugin
 )
 
 target_compile_definitions(QtEmacsKeyThemePlugin PRIVATE QTEMACSKEYTHEME_LIBRARY)
+
+set_target_properties(QtEmacsKeyThemePlugin
+  PROPERTIES
+    OUTPUT_NAME emacskey
+)
+
+# https://bugreports.qt.io/browse/QTBUG-51900
+get_target_property(QT_QMAKE_EXECUTABLE Qt5::qmake LOCATION)
+execute_process(
+  COMMAND ${QT_QMAKE_EXECUTABLE} -query QT_INSTALL_PLUGINS
+  OUTPUT_VARIABLE QT_INSTALL_PLUGINS
+  OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+install(TARGETS QtEmacsKeyThemePlugin
+  LIBRARY DESTINATION "${QT_INSTALL_PLUGINS}/platformthemes"
+)
