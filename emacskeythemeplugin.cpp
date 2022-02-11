@@ -1,3 +1,4 @@
+#include <QApplication>
 #include <QStringList>
 #include <QtDebug>
 #include <memory>
@@ -7,6 +8,7 @@
 #include "emacskey.h"
 #include "emacskeytheme.h"
 #include "emacskeythemeplugin.h"
+#include "emacskeywidgethandler.h"
 
 Q_LOGGING_CATEGORY(lcEmacsKey, "qt.qpa.emacskey")
 
@@ -34,6 +36,13 @@ QPlatformTheme *EmacsKeyThemePlugin::create(const QString &key, const QStringLis
 {
     if (key.compare(QLatin1String("emacskey"), Qt::CaseInsensitive) != 0)
         return nullptr;
+
+    // TODO: who should set up the global event filter object?
+    if (auto *app = qobject_cast<QApplication *>(QCoreApplication::instance())) {
+        auto *handler = new EmacsKeyWidgetHandler(app);
+        QObject::connect(app, &QApplication::focusChanged, handler,
+                         [handler](QWidget *, QWidget *now) { handler->resetFocusWidget(now); });
+    }
 
     QStringList baseThemeNames;
     for (int i = 0; i < paramList.size(); ++i) {

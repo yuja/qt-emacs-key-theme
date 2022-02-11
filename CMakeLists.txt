@@ -9,8 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Gui REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Gui REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Gui Widgets REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Gui Widgets REQUIRED)
 
 add_library(QtEmacsKeyThemePlugin SHARED
   emacskey.h
@@ -19,6 +19,8 @@ add_library(QtEmacsKeyThemePlugin SHARED
   emacskeytheme.json
   emacskeythemeplugin.cpp
   emacskeythemeplugin.h
+  emacskeywidgethandler.cpp
+  emacskeywidgethandler.h
   proxytheme.cpp
   proxytheme.h
 )
@@ -27,6 +29,7 @@ target_link_libraries(QtEmacsKeyThemePlugin
   PRIVATE
     Qt${QT_VERSION_MAJOR}::Gui
     Qt${QT_VERSION_MAJOR}::GuiPrivate
+    Qt${QT_VERSION_MAJOR}::Widgets
 )
 
 target_compile_definitions(QtEmacsKeyThemePlugin PRIVATE QTEMACSKEYTHEME_LIBRARY)
