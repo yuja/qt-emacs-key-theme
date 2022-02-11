@@ -37,7 +37,7 @@ QList<QKeySequence> EmacsKeyTheme::keyBindings(QKeySequence::StandardKey key) co
     case QKeySequence::Print:
         return {}; // drop C-p
     case QKeySequence::Find:
-        return {}; // TODO
+        return { CTRL | ALT | Qt::Key_S }; // TODO
     case QKeySequence::FindNext:
         return { CTRL | Qt::Key_S };
     case QKeySequence::FindPrevious:
