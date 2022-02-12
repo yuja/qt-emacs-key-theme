@@ -4,8 +4,11 @@
 #include <private/qguiapplication_p.h>
 #include <qpa/qplatformintegration.h>
 #include <qpa/qplatformthemefactory_p.h>
+#include "emacskey.h"
 #include "emacskeytheme.h"
 #include "emacskeythemeplugin.h"
+
+Q_LOGGING_CATEGORY(lcEmacsKey, "qt.qpa.emacskey")
 
 namespace {
 // extracted from init_platform()
@@ -41,7 +44,7 @@ QPlatformTheme *EmacsKeyThemePlugin::create(const QString &key, const QStringLis
             baseThemeNames.push_back(args.join(':'));
             break;
         } else {
-            qWarning() << "unknown emacskey theme parameter:" << param;
+            qCWarning(lcEmacsKey) << "unknown theme parameter:" << param;
         }
     }
     baseThemeNames.append(QGuiApplicationPrivate::platform_integration->themeNames());
