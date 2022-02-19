@@ -4,3 +4,11 @@
 *~
 CMakeLists.txt.user
 CMakeLists.txt.user.*
+
+# deb packaging
+/debian/*.substvars
+/debian/.debhelper/
+/debian/debhelper-*
+/debian/files
+/debian/qt-emacs-key-theme/
+/obj-*/
