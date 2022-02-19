@@ -1,16 +1,20 @@
 Source: qt-emacs-key-theme
-Section: unknown
+Section: utils
 Priority: optional
 Maintainer: Yuya Nishihara <yuya@tcha.org>
-Build-Depends: debhelper-compat (= 13)
+Build-Depends: debhelper-compat (= 13),
+               cmake,
+               qtbase5-dev,
+               qtbase5-private-dev,
+               qttools5-dev-tools
 Standards-Version: 4.6.0
-Homepage: <insert the upstream URL, if relevant>
-#Vcs-Browser: https://salsa.debian.org/debian/qt-emacs-key-theme
-#Vcs-Git: https://salsa.debian.org/debian/qt-emacs-key-theme.git
+Homepage: https://github.com/yuja/qt-emacs-key-theme
+Vcs-Browser: https://github.com/yuja/qt-emacs-key-theme
+Vcs-Git: https://github.com/yuja/qt-emacs-key-theme.git
 Rules-Requires-Root: no
 
 Package: qt-emacs-key-theme
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: Emacs-like key theme for Qt
+ This provides Qt platform theme plugin to replace the standard key bindings.
