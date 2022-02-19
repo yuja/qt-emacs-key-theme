@@ -8,6 +8,7 @@ CMakeLists.txt.user.*
 # deb packaging
 /debian/*.substvars
 /debian/.debhelper/
+/debian/changelog
 /debian/debhelper-*
 /debian/files
 /debian/qt-emacs-key-theme/
