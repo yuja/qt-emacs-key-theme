@@ -1,0 +1,21 @@
+Source: qt5-emacs-key-theme
+Section: utils
+Priority: optional
+Maintainer: Yuya Nishihara <yuya@tcha.org>
+Build-Depends:
+  debhelper-compat (= 13),
+  cmake,
+  qtbase5-dev (>= 5.15),
+  qtbase5-private-dev,
+  qttools5-dev-tools,
+Standards-Version: 4.6.1
+Homepage: https://github.com/yuja/qt-emacs-key-theme/
+Vcs-Browser: https://github.com/yuja/qt-emacs-key-theme/
+Vcs-Git: https://github.com/yuja/qt-emacs-key-theme.git
+Rules-Requires-Root: no
+
+Package: qt5-emacs-key-theme
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Emacs-like key theme for Qt
+ This provides Qt platform theme plugin to replace the standard key bindings.
