@@ -9,8 +9,21 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Gui Widgets REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Gui Widgets REQUIRED)
+option(USE_QT5 "Forcibly build against Qt5")
+option(USE_QT6 "Forcibly build against Qt6")
+if(USE_QT5 AND USE_QT6)
+  message(FATAL_ERROR "Both USE_QT5 and USE_QT6 are set.")
+endif()
+if(USE_QT5)
+  find_package(Qt5 5.15 REQUIRED COMPONENTS Gui Widgets)
+elseif(USE_QT6)
+  find_package(Qt6 REQUIRED COMPONENTS Gui Widgets)
+else()
+  find_package(Qt5 5.15 COMPONENTS Gui Widgets)
+  if(NOT Qt5_FOUND)
+    find_package(Qt6 REQUIRED COMPONENTS Gui Widgets)
+  endif()
+endif()
 
 add_library(QtEmacsKeyThemePlugin SHARED
   emacskey.h
@@ -27,9 +40,9 @@ add_library(QtEmacsKeyThemePlugin SHARED
 
 target_link_libraries(QtEmacsKeyThemePlugin
   PRIVATE
-    Qt${QT_VERSION_MAJOR}::Gui
-    Qt${QT_VERSION_MAJOR}::GuiPrivate
-    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt::Gui
+    Qt::GuiPrivate
+    Qt::Widgets
 )
 
 target_compile_definitions(QtEmacsKeyThemePlugin PRIVATE QTEMACSKEYTHEME_LIBRARY)
@@ -40,7 +53,7 @@ set_target_properties(QtEmacsKeyThemePlugin
 )
 
 # https://bugreports.qt.io/browse/QTBUG-51900
-get_target_property(QT_QMAKE_EXECUTABLE Qt5::qmake LOCATION)
+get_target_property(QT_QMAKE_EXECUTABLE Qt::qmake LOCATION)
 execute_process(
   COMMAND ${QT_QMAKE_EXECUTABLE} -query QT_INSTALL_PLUGINS
   OUTPUT_VARIABLE QT_INSTALL_PLUGINS
