@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Yuya Nishihara <yuya@tcha.org>
 Build-Depends: debhelper-compat (= 13),
                cmake,
-               qtbase5-dev,
+               qtbase5-dev (>= 5.15),
                qtbase5-private-dev,
                qttools5-dev-tools
 Standards-Version: 4.6.0
