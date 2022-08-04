@@ -22,6 +22,10 @@ public:
 
     QPlatformSystemTrayIcon *createPlatformSystemTrayIcon() const override;
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 1)
+    Appearance appearance() const override;
+#endif
+
     const QPalette *palette(Palette type) const override;
 
     const QFont *font(Font type) const override;
