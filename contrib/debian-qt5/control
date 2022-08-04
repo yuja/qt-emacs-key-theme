@@ -1,4 +1,4 @@
-Source: qt-emacs-key-theme
+Source: qt5-emacs-key-theme
 Section: utils
 Priority: optional
 Maintainer: Yuya Nishihara <yuya@tcha.org>
@@ -13,7 +13,7 @@ Vcs-Browser: https://github.com/yuja/qt-emacs-key-theme
 Vcs-Git: https://github.com/yuja/qt-emacs-key-theme.git
 Rules-Requires-Root: no
 
-Package: qt-emacs-key-theme
+Package: qt5-emacs-key-theme
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Emacs-like key theme for Qt
