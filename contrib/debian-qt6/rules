@@ -19,7 +19,7 @@
 
 override_dh_auto_configure:
 	dh_auto_configure -- \
-		-DUSE_QT5=ON
+		-DUSE_QT6=ON
 
 
 # dh_make generated override targets
