@@ -51,7 +51,12 @@ QPlatformSystemTrayIcon *ProxyTheme::createPlatformSystemTrayIcon() const
                       : QPlatformTheme::createPlatformSystemTrayIcon();
 }
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 1)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+Qt::ColorScheme ProxyTheme::colorScheme() const
+{
+    return baseTheme_ ? baseTheme_->colorScheme() : QPlatformTheme::colorScheme();
+}
+#elif QT_VERSION >= QT_VERSION_CHECK(6, 2, 1)
 auto ProxyTheme::appearance() const -> Appearance
 {
     return baseTheme_ ? baseTheme_->appearance() : QPlatformTheme::appearance();

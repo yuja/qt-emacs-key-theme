@@ -22,7 +22,9 @@ public:
 
     QPlatformSystemTrayIcon *createPlatformSystemTrayIcon() const override;
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 2, 1)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+    virtual Qt::ColorScheme colorScheme() const override;
+#elif QT_VERSION >= QT_VERSION_CHECK(6, 2, 1)
     Appearance appearance() const override;
 #endif
 
